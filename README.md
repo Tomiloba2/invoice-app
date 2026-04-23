@@ -1,73 +1,330 @@
-# React + TypeScript + Vite
+🚀 Frontend Wizards — Stage 2 Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Invoice Management Application (React)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+📌 Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This project is a fully functional Invoice Management Application built using React.
+It is designed based on the provided Figma specification and demonstrates full CRUD functionality, state persistence, theme switching, and responsive UI design.
 
-## Expanding the ESLint configuration
+The application allows users to create, manage, filter, and track invoices while maintaining a clean and accessible user experience across devices.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+🎯 Core Objective
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Build a responsive invoice system that supports:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Create, Read, Update, Delete (CRUD) invoices
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Save invoices as drafts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Mark invoices as paid
+
+Filter invoices by status
+
+Toggle light and dark mode
+
+Fully responsive design (mobile, tablet, desktop)
+
+Persistent state using Local Storage, IndexedDB, or backend API
+
+
+
+---
+
+🧾 Features
+
+1. CRUD Functionality
+
+Create Invoice
+
+Open invoice form
+
+Fill required fields
+
+Save invoice as Draft or Pending
+
+
+Read Invoice
+
+View all invoices in a list
+
+Click an invoice to view full details
+
+
+Update Invoice
+
+Edit existing invoice data
+
+Changes are persisted immediately
+
+
+Delete Invoice
+
+Delete invoice with confirmation modal
+
+
+
+---
+
+2. Form Validation
+
+All invoice forms include strict validation:
+
+Required fields must be filled
+
+Email must be valid format
+
+At least one invoice item is required
+
+Quantity and price must be positive numbers
+
+
+Error Handling:
+
+Inline error messages
+
+Visual error states
+
+Submission blocked if invalid
+
+
+
+---
+
+3. Invoice Status Workflow
+
+Invoices support three states:
+
+Draft
+
+Pending
+
+Paid
+
+
+Rules:
+
+Draft invoices can be edited freely
+
+Pending invoices can be marked as Paid
+
+Paid invoices cannot revert to Draft
+
+
+UI Representation:
+
+Status badges with distinct colors
+
+Status visible in:
+
+List view
+
+Detail view
+
+
+
+
+---
+
+4. Filtering
+
+Users can filter invoices by:
+
+All
+
+Draft
+
+Pending
+
+Paid
+
+
+Requirements:
+
+Instant UI updates on filter change
+
+Clean empty state when no results match filter
+
+
+
+---
+
+5. Light & Dark Mode
+
+Global theme toggle available
+
+Theme persists using Local Storage
+
+All components adapt dynamically
+
+Maintains strong color contrast in both modes
+
+
+
+---
+
+6. Responsive Design
+
+Fully responsive across:
+
+📱 Mobile (320px+)
+
+📟 Tablet (768px+)
+
+💻 Desktop (1024px+)
+
+
+Requirements:
+
+Adaptive layouts
+
+No horizontal scrolling
+
+Mobile-friendly forms
+
+Proper spacing and visual hierarchy
+
+
+
+---
+
+7. Interactive States
+
+All interactive elements include hover/focus states:
+
+Buttons
+
+Links
+
+Invoice items
+
+Filters
+
+Form inputs
+
+
+
+---
+
+🧠 Recommended Architecture
+
+Suggested React structure:
+
+src/
+ ├── components/
+ │    ├── InvoiceList
+ │    ├── InvoiceDetail
+ │    ├── InvoiceForm
+ │    ├── StatusBadge
+ │    ├── FilterPanel
+ │    ├── Modal
+ │
+ ├── context/
+ │    ├── ThemeContext
+ │    ├── InvoiceContext
+ │
+ ├── hooks/
+ ├── utils/
+ ├── pages/
+ ├── services/
+ └── App.jsx
+
+Key Design Patterns:
+
+Context API for global state (theme + invoices)
+
+Component-based architecture
+
+Reusable UI components
+
+Controlled form inputs
+
+
+
+---
+
+♿ Accessibility Requirements
+
+This project follows WCAG AA standards:
+
+Semantic HTML structure
+
+Proper <label> usage for inputs
+
+Buttons use <button> elements only
+
+Keyboard navigation supported
+
+Modal supports:
+
+Focus trapping
+
+ESC key close
+
+
+High contrast in both themes
+
+
+
+---
+
+💾 Data Persistence
+
+At least one of the following must be used:
+
+Local Storage (recommended for simplicity)
+
+IndexedDB
+
+Backend API (Node.js / Express / Next.js API routes)
+
+
+
+---
+
+🧪 Acceptance Criteria
+
+Your submission will be evaluated based on:
+
+[x] Full CRUD functionality works correctly
+
+[x] Form validation prevents invalid submissions
+
+[x] Invoice status logic is correct
+
+[x] Filtering works as expected
+
+[x] Theme toggle persists across reload
+
+[x] Fully responsive UI
+
+[x] Clean and maintainable component structure
+
+[x] No console errors
+
+[x] Accessibility best practices implemented
+
+
+
+--
+⚙️ Setup Instructions (Example)
+
+# Clone repository
+git clone <repo-url>
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+
